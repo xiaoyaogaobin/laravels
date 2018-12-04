@@ -1,0 +1,1 @@
+0000007000a:2:{s:12:"access_token";s:157:"16_27b4qKiTV1EMKavKBjF6-qgzm7dUZwn4H6dQbQiZednNg4J4EUk93ULTcpwK31yeSWWQCnuI5UqH3pVF79aBYvru2Zcwl_NnG7AGqFabdvmeJbKX3PipBwy0sKUmnv1jhqMSnbRUzNwHUBuvLRRaACAHNN";s:10:"expires_in";i:7200;}
