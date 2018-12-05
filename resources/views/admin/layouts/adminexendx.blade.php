@@ -823,35 +823,7 @@
                                 </a>
 
                             </li>
-                            <li class="nav-item">
-                                <a href="#sidebarProject" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProject">
-                                    Project
-                                </a>
-                                <div class="collapse " id="sidebarProject">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="project-overview.html" class="nav-link ">
-                                                Overview
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="project-files.html" class="nav-link ">
-                                                Files
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="project-reports.html" class="nav-link ">
-                                                Reports
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="project-new.html" class="nav-link ">
-                                                New project <span class="badge badge-soft-success ml-auto">New</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
                 </li>
@@ -920,7 +892,7 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'mysql'])}}" class="nav-link">
-                                    基本配置
+                                    基本配置 <span class="badge badge-soft-danger ml-auto">Mysql</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -939,7 +911,7 @@
                 </li>
                 {{--微信配置--}}
                 <li class="nav-item ">
-                    <a class="nav-link" href="#sidebarDashboard" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarDashboard">
+                    <a class="nav-link" href="#sidebarDashboard" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboard">
                         <i class="fa fa-wechat" style="display: inline-block;min-width: 1.75rem;!important;"></i> 微信配置
                     </a>
                     <div class="collapse " id="sidebarDashboard">
@@ -986,6 +958,31 @@
                             <li class="nav-item">
                                 <a href="{{route('slide.create')}}" class="nav-link">
                                     上传图片
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#sidebarProject" class="nav-link collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProject">
+                        <i class="fa fa-male" style="display: inline-block;min-width: 1.75rem;!important;"></i>权限管理
+                    </a>
+                    <div class="collapse show" id="sidebarProject" style="">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="project-overview.html" class="nav-link ">
+                                    用户管理<span class="badge badge-soft-success ml-auto">User</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('role.role.index')}}" class="nav-link ">
+                                    角色列表<span class="badge badge-soft-success ml-auto">Role</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('role.permission.index')}}" class="nav-link ">
+                                    权限列表 <span class="badge badge-soft-success ml-auto">Permission</span>
                                 </a>
                             </li>
 
@@ -1384,6 +1381,7 @@
     </footer>
 <!-- JAVASCRIPT
 ================================================== -->
+    {{--"content-hash": "f952fc20db9e32f6892cadab711c5150",--}}
 
 <!-- Libs JS -->
 @include('layouts.hdjs')

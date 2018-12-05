@@ -21,5 +21,6 @@ return array(
     'c9b7496aa2e287ba00ff44d2d2a861b1' => $vendorDir . '/hieu-le/active/src/helpers.php',
     '59ae5e0dd660c5d8916867dacf0ebb9d' => $vendorDir . '/houdunwang/laravel/src/helper.php',
     '72b1e3f4a2af9b30b3f137b3ec2057fc' => $vendorDir . '/spatie/laravel-activitylog/src/helpers.php',
+    '377b22b161c09ed6e5152de788ca020a' => $vendorDir . '/spatie/laravel-permission/src/helpers.php',
     'cbab54ae64d6dbe2f2d6130bbf0c02d1' => $baseDir . '/app/config/php_config.php',
 );

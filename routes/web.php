@@ -109,3 +109,13 @@ Route::group(['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function(){
 });
     // 轮播图
     Route::resource('slide','Slide\SlideController');
+   // 权限管理
+Route::group(['prefix'=>'role','namespace'=>'Role' ,'as' =>'role.'],function(){
+
+    //权限列表
+    Route::get('permission/index','PermissionController@index')->name('permission.index');
+    //清除缓存
+    Route::get('forgetPermissionCache','PermissionController@forgetPermissionCache')->name('forgetPermissionCache');
+    //角色添加
+    Route::resource('role','RoleController');
+});

@@ -15,6 +15,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/disk/assets')}}/css/theme.min.css">
 
+
     <title>登录</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
@@ -40,11 +41,12 @@
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-               我们因为有你,所以我们会很幸福.
+                我们因为有你,所以我们会很幸福.
             </p>
 
             <!-- Form -->
-            <form method="post" action="{{route('user.login',['form'=>Request::query('form')])}}">
+            <form method="post" action="{{route('user.login',['form'=>Request::query('form')])}}"
+                  class="form-horizontal" id="registration-form">
                 @csrf
                 <div class="form-group">
 
@@ -54,7 +56,10 @@
                     </label>
 
                     <!-- Input -->
-                    <input type="number" name="email" value="{{old('name')}}" class="form-control" placeholder="请输入你的手机号码">
+                    <input type="number" name="email" value="{{old('name')}}" class="form-control"
+                           placeholder="请输入你的手机号码"
+                           data-validation="custom" data-validation-regexp="^[a-z]{3,}$"
+                           data-validation-error-msg="用户名由3位以上字母构成">
 
                 </div>
                 <!-- Email address -->
@@ -72,7 +77,8 @@
                     <div class="input-group input-group-merge">
 
                         <!-- Input -->
-                        <input type="password" name ='password'class="form-control form-control-appended" placeholder="请输入你的密码">
+                        <input type="password" name='password' class="form-control form-control-appended"
+                               placeholder="请输入你的密码">
 
                         <!-- Icon -->
                         <div class="input-group-append">
@@ -111,5 +117,8 @@
 ================================================== -->
 @include('layouts.hdjs')
 @include('layouts.message')
+
+
+
 </body>
 </html>

@@ -24,7 +24,7 @@
     {{--幻灯片结束--}}
 
     <!-- CARDS -->
-    <div class="container mt--6">
+    <div class="container">
         <div class="row">
             <div class="col-12 col-xl-8">
 
