@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Role;
 
 
+use App\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
@@ -31,6 +32,15 @@ class RoleController extends Controller
         //
         return view('role.role.create');
     }
+
+     public function  show(Role $role){
+         $modules =  Module::all();
+//         dd($modules->toArray());
+
+         return view('role.role.set_permission',compact('role','modules'));
+
+
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -83,5 +93,13 @@ class RoleController extends Controller
         return back()->with('success','删除成功');
 
         //
+    }
+    //接受传来的权限写进数据库
+    public function setRolePermission(Role $role, Request $request){
+//        dd($request->all());
+        // 给角色添加权限
+        $role->syncPermissions($request->permissions);
+        // 返回提示
+        return back()->with('success','保存成功');
     }
 }

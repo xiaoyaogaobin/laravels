@@ -758,18 +758,21 @@
                         <i class="fa fa-truck" style="display: inline-block;min-width: 1.75rem;!important;" ></i> 网站首页
                     </a>
                 </li>
+
                 <li class="nav-item  dropdown">
                     <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fa fa-globe" style="display: inline-block;min-width: 1.75rem;!important;"></i> 网站配置
                     </a>
                     <div class="collapse" id="sidebarAuth">
                         <ul class="nav nav-sm flex-column">
+                            @can('Admin-admin-basic')
                             <li class="nav-item show">
                                 <a href="{{route('config.edit',['name'=>'base'])}}" class="nav-link" >
                                     基本配置
                                 </a>
 
                             </li>
+                            @endcan
 
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'upload'])}}" class="nav-link" >
@@ -777,40 +780,54 @@
                                 </a>
 
                             </li>
+
+                                @can('Admin-admin-email')
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'email'])}}" class="nav-link" >
                                     邮件配置
                                 </a>
 
                             </li>
+                                @endcan
+                                @can('Admin-admin-number')
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'code'])}}" class="nav-link" >
                                     验证码配置
                                 </a>
 
                             </li>
+                                @endcan
+                                @can('Admin-admin-search')
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'search'])}}" class="nav-link" >
                                     搜索配置
                                 </a>
 
                             </li>
+                                @endcan
+                                @can('Admin-admin-iphone')
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'iphone'])}}" class="nav-link" >
                                     手机配置
                                 </a>
 
                             </li>
+                                @endcan
+                                @can('Admin-admin-wechat')
                             <li class="nav-item">
                                 <a href="{{route('config.edit',['name'=>'wechat'])}}" class="nav-link" >
                                     微信配置
                                 </a>
 
                             </li>
+                                @endcan
+
 
                         </ul>
                     </div>
                 </li>
+                @can('Article-column-management')
+                {{--文章管理   --}}
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
                         <i class="fa fa-book" style="display: inline-block;min-width: 1.75rem;!important;"></i> 文章系统
@@ -827,7 +844,10 @@
                         </ul>
                     </div>
                 </li>
+                {{--文章管理--}}
+                @endcan
                 {{--视频管理--}}
+                @can('video-video-management')
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarComponents">
                         <i class="fa fa-video-camera" style="display: inline-block;min-width: 1.75rem;!important;"></i> 视频管理
@@ -883,7 +903,9 @@
                         </ul>
                     </div>
                 </li>
+                @endcan
                 {{--数据库配置--}}
+                @if(auth()->user()->is_admin==1)
                 <li class="nav-item ">
                     <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="fa fa-database" style="display: inline-block;min-width: 1.75rem;!important;"></i> 数据库配置
@@ -909,41 +931,58 @@
                         </ul>
                     </div>
                 </li>
+                @endif
+                @if(auth()->user()->hasAnyPermission(['Wechat-button']))
                 {{--微信配置--}}
                 <li class="nav-item ">
+
                     <a class="nav-link" href="#sidebarDashboard" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboard">
                         <i class="fa fa-wechat" style="display: inline-block;min-width: 1.75rem;!important;"></i> 微信配置
                     </a>
                     <div class="collapse " id="sidebarDashboard">
                         <ul class="nav nav-sm flex-column">
+                            @can('Wechat-response-base')
                             <li class="nav-item">
                                 <a href="{{route('wechat.response_base.index')}}" class="nav-link active">
                                     基本回复
                                 </a>
-                            </li>
+                            </li>  @endcan
+                                @can('Wechat-button')
+
                             <li class="nav-item">
                                 <a href="{{route('wechat.button.index')}}" class="nav-link ">
                                     微信菜单
                                 </a>
-                            </li>
+                            </li>@endcan
+                                @can('Wechat-response-text')
+
                             <li class="nav-item">
                                 <a href="{{route('wechat.response_text.index')}}" class="nav-link active">
                                     文本回复
                                 </a>
-                            </li><li class="nav-item">
+                            </li>
+                            @endcan
+                                @can('Wechat-response-news')
+
+                            <li class="nav-item">
                                 <a href="{{route('wechat.response_news.index')}}" class="nav-link active">
                                     图文回复
                                 </a>
                             </li>
+
+                                @endcan
                             <li class="nav-item">
                                 <a href="dashboard-topnav-no-hero.html" class="nav-link">
                                     Topnav
                                 </a>
                             </li>
+
                         </ul>
                     </div>
                 </li>
+                @endif
                 {{--轮播图--}}
+                @can('Slide-slide')
                 <li class="nav-item">
                     <a href="#sidebarError" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarError">
                         <i class="fa fa-file-image-o" style="display: inline-block;min-width: 1.75rem;!important;"></i> 轮播图
@@ -964,6 +1003,8 @@
                         </ul>
                     </div>
                 </li>
+                @endcan
+                @if(auth()->user()->is_admin==1)
                 <li class="nav-item">
                     <a href="#sidebarProject" class="nav-link collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProject">
                         <i class="fa fa-male" style="display: inline-block;min-width: 1.75rem;!important;"></i>权限管理
@@ -971,7 +1012,7 @@
                     <div class="collapse show" id="sidebarProject" style="">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="project-overview.html" class="nav-link ">
+                                <a href="{{route('role.user_sole')}}" class="nav-link ">
                                     用户管理<span class="badge badge-soft-success ml-auto">User</span>
                                 </a>
                             </li>
@@ -989,6 +1030,7 @@
                         </ul>
                     </div>
                 </li>
+                @endif
                 <li class="nav-item d-md-none">
                     <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
                         <span class="fe fe-bell"></span> Notifications

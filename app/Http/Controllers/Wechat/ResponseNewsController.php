@@ -18,7 +18,7 @@ class ResponseNewsController extends Controller
     public function index()
     {
         //
-
+        hdHasRole('Wechat-response-news');
         $fields = ResponseNews::paginate(10);
 
         return view('whecat.response_news.index',compact('fields'));
@@ -31,6 +31,7 @@ class ResponseNewsController extends Controller
      */
     public function create(WechatService $wechatService)
     {
+        hdHasRole('Wechat-response-news');
         $ruleView = $wechatService->ruleView();
 //        dd($ruleView);
         //引入模版
@@ -45,6 +46,7 @@ class ResponseNewsController extends Controller
      */
     public function store(Request $request,WechatService $wechatService)
     {
+        hdHasRole('Wechat-response-news');
         \DB::beginTransaction();
         //调用wec 方法
         $rule = $wechatService->ruleStore('news');
@@ -71,6 +73,7 @@ class ResponseNewsController extends Controller
      */
     public function edit(ResponseNews $responseNews,WechatService $wechatService)
     {
+        hdHasRole('Wechat-response-news');
         $ruleView = $wechatService->ruleView($responseNews['rule_id']);
 //        dd($responseNews);
 
@@ -88,6 +91,7 @@ class ResponseNewsController extends Controller
     public function update(Request $request, ResponseNews $responseNews,WechatService $wechatService)
     {
 
+        hdHasRole('Wechat-response-news');
         \DB::beginTransaction();
         //上面模版提交
         $wechatService->ruleUpdate($responseNews['rule_id']);
@@ -111,6 +115,7 @@ class ResponseNewsController extends Controller
      */
     public function destroy(ResponseNews $responseNews)
     {
+        hdHasRole('Wechat-response-news');
         $responseNews->rule()->delete();
         return redirect()->route('wechat.response_news.index')->with('success','删除成功');
         //

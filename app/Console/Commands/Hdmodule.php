@@ -69,7 +69,7 @@ class Hdmodule extends Command
                          'module'=>$moduleName
                     ])->save();
 
-                    dump($permission);
+//                    dump($permission);
                 }
 
 

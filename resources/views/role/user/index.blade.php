@@ -13,15 +13,15 @@
 
                             <!-- Title -->
                             <h4 class="card-header-title">
-                                角色列表
+                                用户列表
                             </h4>
 
                         </div>
                         <div class="col-auto">
 
                             <!-- Button -->
-                            <a href="{{route('role.role.create')}}" class="btn btn-sm btn-success	DUE DATE 	DUE DATE ">
-                                +添加角色
+                            <a href="{{route('admin.admin')}}" class="btn btn-sm btn-success	DUE DATE 	DUE DATE ">
+                                返回栏目
                             </a>
 
                         </div>
@@ -33,17 +33,17 @@
                         <tr>
                             <th>
                                 <a href="#" class="text-muted sort" >
-                                    角色中文名称
+                                    用户id
                                 </a>
                             </th>
                             <th>
                                 <a href="#" class="text-muted sort" >
-                                    角色英文名称
+                                    用户昵称
                                 </a>
                             </th>
                             <th>
                                 <a href="#" class="text-muted sort" >
-                                    守卫
+                                    用户账号
                                 </a>
                             </th>
                             <th >
@@ -58,36 +58,30 @@
                         </tr>
                         </thead>
                         <tbody class="list">
-                        @foreach($roles as $role )
+                        @foreach($users as $user )
                         <tr>
                             <td class="goal-project">
-                                {{$role->title}}
+                                {{$user->id}}
                             </td>
                             <td class="goal-status">
                                 <span class="text-warning">●</span>
-                            {{$role->name}}
+                            {{$user->name}}
                             </td>
                             <td class="goal-progress">
-                                {{$role->guard_name}}
+                                {{$user->email}}
                             </td>
                             <td class="goal-date">
 
                                 <div class="button-group">
-                                    <a href="{{route('role.role.show',$role)}}">
-                                        <button type="button" class="btn btn-primary btn-sm">权限设置</button></a>
-                                    <a href="{{route('role.role.edit',$role)}}">
-                                        <button type="button" class="btn btn-success btn-sm">修改</button></a>
+                                    <a href="{{route('role.user_create',$user)}}">
+                                        <button type="button" class="btn btn-info btn-sm">设置角色</button></a>
 
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="del(this)">删除</button>
-                                    <form action="{{route('role.role.destroy',$role)}}" id="del" method="post">
-                                        @csrf @method('DELETE')
-                                                                   </form>
                                 </div>
 
                             </td>
                             <td class="text-right">
                                 <div class="avatar-group">
-                                    {{$role->created_at->diffForHumans()}}
+                                    {{$user->created_at->diffForHumans()}}
                                 </div>
                             </td>
 
@@ -96,16 +90,8 @@
                     </table>
                 </div>
             </div>
-
+{{$users->links()}}
         </div>
     </div> <!-- / .row -->
 
 @endsection
-<script>
-    function del(obj){
-        require(['hdjs','bootstrap'], function (hdjs) {
-            hdjs.confirm('确定删除吗?', function () {
-                $('#del').submit();
-            })
-        })}
-</script>

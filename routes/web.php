@@ -118,4 +118,13 @@ Route::group(['prefix'=>'role','namespace'=>'Role' ,'as' =>'role.'],function(){
     Route::get('forgetPermissionCache','PermissionController@forgetPermissionCache')->name('forgetPermissionCache');
     //角色添加
     Route::resource('role','RoleController');
+    //角色权限
+    Route::post('role.set_role_permission/{role}','RoleController@setRolePermission')->name('role.set_role_permission');
+    //用户展示
+    Route::get('user_role','UserController@index')->name('user_sole');
+    //用户角色栏目添加
+    Route::get('user_create/{user}','UserController@create')->name('user_create');
+    Route::post('user_set_role_store/{user}','UserController@userSetRoleStore')->name('user_set_role_store');
+
 });
+

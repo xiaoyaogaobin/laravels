@@ -152,7 +152,8 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="{{route('member.user.show',auth()->user())}}" class="dropdown-item">{{auth()->user()->name}}</a>
 
-                        @can('view',auth()->user())
+                        {{--@can('view',auth()->user())--}}
+                        @can('Admin-admin-index')
 
 
                             <a href="{{route('admin.admin')}}" class="dropdown-item">管理员登录</a>

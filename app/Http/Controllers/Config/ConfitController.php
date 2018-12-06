@@ -18,6 +18,8 @@ class ConfitController extends Controller
     // 加载首页
     public  function  edit($name){
 
+
+
         $config = Config::firstOrNew(
             ['name'=>$name]
         );

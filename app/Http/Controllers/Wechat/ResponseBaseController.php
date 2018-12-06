@@ -15,13 +15,15 @@ class ResponseBaseController extends Controller
      */
     public function index()
     {
+        hdHasRole('Wechat-response-base');
+
         $field = ResponseBase::find(1);
         return view('whecat.response_base.index',compact('field'));
     }
 
     public function store(Request $request)
     {
-
+        hdHasRole('Wechat-response-base');
         $responseBase = ResponseBase::firstOrNew(['id'=>1]);
 
         $responseBase['data'] = $request->all();
